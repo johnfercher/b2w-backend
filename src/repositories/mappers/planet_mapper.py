@@ -13,17 +13,19 @@ class PlanetMapper(object):
                     "_id": domain.id,
                     "name": domain.name,
                     "terrain": domain.terrain,
-                    "climate": domain.climate
+                    "climate": domain.climate,
+                    "qtd_movies": domain.qtd_movies
                 }
             else:
                 return {
                     "_id": ObjectId(),
                     "name": domain.name,
                     "terrain": domain.terrain,
-                    "climate": domain.climate
+                    "climate": domain.climate,
+                    "qtd_movies": domain.qtd_movies
                 }
 
     @classmethod
     def data_to_domain(cls, data):
         if data:
-            return Domain(data["name"], data["terrain"], data["climate"], str(data["_id"]))
+            return Domain(data["name"], data["terrain"], data["climate"], data["qtd_movies"], str(data["_id"]))
