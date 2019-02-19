@@ -1,6 +1,6 @@
 from flask import Flask
 
-from src.application.planet_controller import planet_controller
+from backend.src.application.planet_controller import planet_controller
 
 app = Flask(__name__)
 

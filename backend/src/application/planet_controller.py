@@ -1,7 +1,6 @@
 from flask import Blueprint, request, Response
-from src.application.filters.error_handler import error_handler
-from src.domain.entities.planet import Planet
-
+from backend.src.application.filters.error_handler import error_handler
+from backend.src.domain.entities.planet import Planet
 
 planet_controller = Blueprint('planet', __name__, template_folder='templates')
 
