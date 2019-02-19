@@ -1,6 +1,6 @@
 import uuid
 from random import randint
-
+from bson import ObjectId
 from src.infrastructure.json_parser import JsonParser
 from src.infrastructure.serializable_object import SerializableObject
 
@@ -20,7 +20,7 @@ class Planet(SerializableObject):
         climate = str(uuid.uuid4())
         terrain = str(uuid.uuid4())
         qtd_movies = randint(0, 10)
-        id = str(uuid.uuid4())
+        id = str(ObjectId())
 
         return cls(name=name, climate=climate, terrain=terrain, qtd_movies=qtd_movies, id=id)
 
