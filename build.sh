@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo docker build -t b2w .
+sudo docker build -t b2w-backend .
