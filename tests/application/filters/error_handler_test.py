@@ -18,9 +18,9 @@ def test_when_raise_error_should_return_500():
 def test_when_not_raise_error_should_return_200():
 
     @error_handler
-    def raise_error():
+    def return_ok():
         return "ok"
 
-    result = raise_error()
+    result = return_ok()
 
     assert result == "ok"

@@ -11,7 +11,6 @@ def has_valid_data_in_response(f):
             return Response(status=404)
 
         if type(data) is list:
-
             jsons = [element.to_json() for element in data]
             json = ','.join(jsons)
             json = "[{0}]".format(json)
