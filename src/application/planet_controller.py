@@ -1,12 +1,16 @@
-from flask import Blueprint
+from flask import Blueprint, request, Response
 from src.application.filters.error_handler import error_handler
+from src.domain.entities.planet import Planet
+
+
 planet_controller = Blueprint('planet', __name__, template_folder='templates')
 
 
 @planet_controller.route('/planet', methods=['POST'])
 @error_handler
 def post():
-    return "post"
+    planet = Planet.from_json(request.get_json())
+    return Response(planet.to_json(), status=200, mimetype='application/json')
 
 
 @planet_controller.route('/planet', methods=['GET'])
