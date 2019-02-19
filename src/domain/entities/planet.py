@@ -1,6 +1,6 @@
 import uuid
-from backend.src.infrastructure.json_parser import JsonParser
-from backend.src.infrastructure.serializable_object import SerializableObject
+from src.infrastructure.json_parser import JsonParser
+from src.infrastructure.serializable_object import SerializableObject
 
 
 class Planet(SerializableObject):
