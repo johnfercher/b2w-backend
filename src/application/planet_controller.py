@@ -11,7 +11,11 @@ planet_controller = Blueprint('planet', __name__, template_folder='templates')
 @error_handler
 @has_valid_data_in_response
 def post():
-    return Planet.from_json(request.get_json())
+    repository = PlanetRepository()
+
+    planet = Planet.from_json(request.get_json())
+
+    return repository.insert(planet)
 
 
 @planet_controller.route('/planet', methods=['GET'])

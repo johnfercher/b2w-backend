@@ -13,10 +13,15 @@ class PlanetRepository(object):
         for planet in planets:
             self.insert(planet, collection)
 
-    def insert(self, planet: Planet, collection):
+    def insert(self, planet: Planet, collection: PlanetCollection = None):
+        if collection is None:
+            collection = PlanetCollection.get_collection()
+
         data = PlanetMapper.domain_to_data(planet)
 
-        collection.insert_one(data)
+        data["_id"] = collection.insert_one(data).inserted_id
+
+        return PlanetMapper.data_to_domain(data)
 
     def list(self):
         collection = PlanetCollection.get_collection()
