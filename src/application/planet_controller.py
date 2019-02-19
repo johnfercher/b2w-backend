@@ -25,14 +25,20 @@ def get():
 
 @planet_controller.route('/planet/id', methods=['GET'])
 @error_handler
+@has_valid_data_in_response
 def get_id():
-    return "get_id"
+    repository = PlanetRepository()
+
+    return repository.get_by_id("5c6c58558b11406e424cf011")
 
 
 @planet_controller.route('/planet/name', methods=['GET'])
 @error_handler
+@has_valid_data_in_response
 def get_name():
-    return "get_name"
+    repository = PlanetRepository()
+
+    return repository.get_by_name("Alderaan")
 
 
 @planet_controller.route('/planet', methods=['DELETE'])

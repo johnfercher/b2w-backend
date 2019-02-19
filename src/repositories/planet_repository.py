@@ -1,3 +1,5 @@
+from bson import ObjectId
+
 from src.domain.entities.planet import Planet
 from src.repositories.mappers.planet_mapper import PlanetMapper
 from src.repositories.planet_collection import PlanetCollection
@@ -22,3 +24,17 @@ class PlanetRepository(object):
         datas = collection.find()
 
         return [PlanetMapper.data_to_domain(data) for data in datas]
+
+    def get_by_id(self, id):
+        collection = PlanetCollection.get_collection()
+
+        data = collection.find_one({'_id': ObjectId(id)})
+
+        return PlanetMapper.data_to_domain(data)
+
+    def get_by_name(self, name):
+        collection = PlanetCollection.get_collection()
+
+        data = collection.find_one({'name': name})
+
+        return PlanetMapper.data_to_domain(data)

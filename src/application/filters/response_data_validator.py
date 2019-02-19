@@ -17,8 +17,6 @@ def has_valid_data_in_response(f):
             json = "[{0}]".format(json)
             return Response(json, status=200, mimetype='application/json')
         else:
-            print("test")
-
             return Response(data.to_json(), status=200, mimetype='application/json')
 
     return decorated_function
