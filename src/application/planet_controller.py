@@ -35,10 +35,15 @@ def get():
         return repository.list()
 
 
-@planet_controller.route('/planet/id', methods=['DELETE'])
+@planet_controller.route('/planet', methods=['DELETE'])
 @error_handler
 @has_valid_data_in_response
 def delete():
     repository = PlanetRepository()
 
-    return repository.delete_by_id("5c6c58558b11406e424cf011")
+    id = request.args.get('id')
+
+    if id:
+        return repository.delete_by_id(id)
+    else:
+        return None
