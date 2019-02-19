@@ -24,25 +24,15 @@ def post():
 def get():
     repository = PlanetRepository()
 
-    return repository.list()
+    id = request.args.get('id')
+    name = request.args.get('name')
 
-
-@planet_controller.route('/planet/id', methods=['GET'])
-@error_handler
-@has_valid_data_in_response
-def get_id():
-    repository = PlanetRepository()
-
-    return repository.get_by_id("5c6c58558b11406e424cf011")
-
-
-@planet_controller.route('/planet/name', methods=['GET'])
-@error_handler
-@has_valid_data_in_response
-def get_name():
-    repository = PlanetRepository()
-
-    return repository.get_by_name("Alderaan")
+    if id:
+        return repository.get_by_id(id)
+    elif name:
+        return repository.get_by_name(name)
+    else:
+        return repository.list()
 
 
 @planet_controller.route('/planet/id', methods=['DELETE'])

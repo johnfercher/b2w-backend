@@ -28,4 +28,4 @@ class PlanetMapper(object):
     @classmethod
     def data_to_domain(cls, data):
         if data:
-            return Domain(data["name"], data["terrain"], data["climate"], data["qtd_movies"], str(data["_id"]))
+            return Domain(data["name"], data["terrain"], data["climate"], int(data["qtd_movies"]), str(data["_id"]))
