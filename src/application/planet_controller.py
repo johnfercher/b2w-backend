@@ -41,7 +41,10 @@ def get_name():
     return repository.get_by_name("Alderaan")
 
 
-@planet_controller.route('/planet', methods=['DELETE'])
+@planet_controller.route('/planet/id', methods=['DELETE'])
 @error_handler
+@has_valid_data_in_response
 def delete():
-    return "delete"
+    repository = PlanetRepository()
+
+    return repository.delete_by_id("5c6c58558b11406e424cf011")

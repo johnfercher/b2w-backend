@@ -38,3 +38,12 @@ class PlanetRepository(object):
         data = collection.find_one({'name': name})
 
         return PlanetMapper.data_to_domain(data)
+
+    def delete_by_id(self, id):
+        collection = PlanetCollection.get_collection()
+
+        data = collection.find_one({'_id': ObjectId(id)})
+
+        collection.delete_one({'_id': ObjectId(id)})
+
+        return PlanetMapper.data_to_domain(data)
